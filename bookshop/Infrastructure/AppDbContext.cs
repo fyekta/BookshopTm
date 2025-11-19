@@ -35,7 +35,7 @@ namespace bookshop.Infrastructure
 
             modelBuilder.Entity<User>().HasData(new List<User>()
             {
-                new User() {Id  = 1 , Username = "ali" , PasswordHash = "0123" , },
+                new User() {Id  = 1 , Username = "ali" , PasswordHash = "0123" ,  },
                 new User() {Id  = 2 , Username = "Rasool" , PasswordHash = "4567" ,  },
                 new User() {Id  = 3 , Username = "ftm" , PasswordHash = "8910" ,  }
             });

@@ -5,7 +5,7 @@
 *@
 @{
 }
-@model ListViewModel
+@model List<book>
 
 
 
@@ -31,8 +31,8 @@
             line-height: 1.6;
         }
 
-       
-    
+
+
         .book-container {
             background: white;
             border-radius: 12px;
@@ -77,11 +77,30 @@
         tr:hover {
             background-color: #f7fafc;
         }
+
+        .btn {
+            padding: 16px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background: #007bff;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        }
     </style>
 </head>
 <body>
 
+    <br />
+    <br />
+    <a href="/ManageBook/Create" class="btn">
+        افزودن کتاب جدید
 
+    </a>
     <div class="book-container">
         <div class="title-box">
             <span>لیست کتاب ها</span>
@@ -95,11 +114,11 @@
                         <th>نویسنده</th>
                         <th>تعداد صفحه</th>
                         <th>دسته بندی</th>
-                       
+                        <th> عملیات</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.books)
+                    @foreach (var item in Model)
                     {
                         <tr>
                             @* <td>@item.Id</td> *@
@@ -107,31 +126,10 @@
                             <td>@item.Author</td>
                             <td>@item.pagecount</td>
                             <td>@item.Category.Name</td>
-                           
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="book-container">
-        <div class="title-box">
-            <span>لیست دسته بندی ها</span>
-        </div>
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        @* <th>شناسه</th> *@
-                        <th>نام</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.categories)
-                    {
-                        <tr>
-                           @*  <td>@item.Id</td> *@
-                            <td>@item.Name</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id"> ویرایش</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('آیا از حذف این مورد مطمئن هستی؟');"> حذف</a>
+                            </td>
                         </tr>
                     }
                 </tbody>
@@ -139,8 +137,5 @@
         </div>
     </div>
 
-
-
-
-</body>
+    </body>
 </html>

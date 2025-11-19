@@ -1,4 +1,6 @@
 ﻿using bookshop.Entities;
+using bookshop.Enum;
+using bookshop.Migrations;
 using bookshop.servies;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,16 +33,29 @@ namespace bookshop.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Login(string username , string PasswordHash)
+        public IActionResult Login(string username , string PasswordHash )
         {
+            
             var user = _userServies.GetUserByUsername(username);
             if (user != null && _userServies.ValidatePassword(user, PasswordHash)== true)
             {
-                return RedirectToAction("Index" , "Book");
+                
+                if (user.Role == RoleEnum.Admin) 
+                {
+                    return RedirectToAction("Index", "Admin"); 
+                }
+                else if (user.Role == RoleEnum.Cumtomer) 
+                {
+                    return RedirectToAction("Index", "Book");  
+                }
+               
             }
 
             return View();
+          
         }
 
+         
+        
     }
 }

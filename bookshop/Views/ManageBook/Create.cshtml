@@ -1,0 +1,175 @@
+﻿@using bookshop.Entities
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "";
+}
+@model  CreateBookViewModel
+
+
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>افزودن کتاب جدید</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Tahoma, Arial, sans-serif;
+            direction: rtl;
+        }
+
+        .card {
+            background: white;
+            width: 100%;
+            max-width: 480px;
+            padding: 50px 45px;
+            border-radius: 24px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+     
+
+        h2 {
+            color: #2c3e50;
+            font-size: 29px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+            text-align: right;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+            input:focus, select:focus {
+                outline: none;
+                border-color: #4facfe;
+                box-shadow: 0 0 0 4px rgba(79, 172, 254, 0.2);
+            }
+
+            input::placeholder {
+                color: #aaa;
+            }
+
+        .btn-group {
+            margin-top: 35px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: white;
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+        }
+
+            .btn-primary:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 30px rgba(79, 172, 254, 0.5);
+            }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+            .btn-secondary:hover {
+                background: #7f8c8d;
+            }
+
+        .text-danger {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 6px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>افزودن کتاب جدید</h2>
+
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label>عنوان کتاب</label>
+                <input asp-for="book.Title" placeholder="مثال: 1984" required />
+                
+            </div>
+
+            <div class="form-group">
+                <label>نویسنده</label>
+                <input asp-for="book.Author" placeholder="مثال: جورج اورول" required />
+               
+            </div>
+
+            <div class="form-group">
+                <label>تعداد صفحات</label>
+                <input asp-for="book.pagecount" type="number" min="1" placeholder="مثال: ۳۲۸" required />
+                
+            </div>
+
+            <div class="form-group">
+                <label>دسته‌بندی</label>
+               
+                <select asp-for="book.CategoryId">
+                    @foreach (var item in Model.categories)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+                
+            </div>
+
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary">ثبت کتاب</button>
+                <a asp-action="Index" class="btn btn-secondary">انصراف</a>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
+

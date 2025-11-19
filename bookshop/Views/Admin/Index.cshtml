@@ -1,0 +1,100 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    Layout = "";
+}
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>ورود</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            background: #87cefa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top:25vh;
+        }
+
+
+        .admin-box {
+            background: white;
+            width: 380px;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+            .admin-box h1 {
+                font-size: 28px;
+                color: #222;
+                margin-bottom: 40px;
+                font-weight: bold;
+            }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .btn {
+            padding: 16px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background: #007bff;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        }
+
+            .btn:hover {
+                background: #0056b3;
+                transform: translateY(-3px);
+                box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+            }
+
+            .btn:active {
+                transform: translateY(0);
+            }
+    </style>
+</head>
+<body>
+
+    <div class="admin-box">
+        <h1>پنل مدیریت</h1>
+
+        <div class="btn-group">
+            <a href="/ManageBook/Index" class="btn">
+                مدیریت کتاب‌ها
+               
+            </a>
+             
+
+            <a href="/ManageCategory/Index" class="btn">
+                مدیریت دسته‌بندی‌ها
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
+
+

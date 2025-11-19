@@ -1,10 +1,13 @@
-﻿namespace bookshop.Entities
+﻿using bookshop.Enum;
+
+namespace bookshop.Entities
 {
     public class User
     {
         public int Id { get; set; }
         public string Username { get; set; }
         public string PasswordHash { get; set; }
-        
-    }
+        public RoleEnum Role { get; set; } =RoleEnum.Cumtomer;
+
+}
 }

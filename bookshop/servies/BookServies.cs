@@ -5,16 +5,37 @@ namespace bookshop.servies
 {
     public class BookServies : IBookServies
     {
-        private readonly IBookRepository _userRepository;
+        private readonly IBookRepository _bookRepository;
 
         public BookServies()
         {
-            _userRepository = new BookRepository();
+            _bookRepository = new BookRepository();
+        }
+
+        public void Create(book book)
+        {
+            _bookRepository.Create(book);
+
+        }
+
+        public void Delete(int id)
+        {
+            _bookRepository.Delete(id);
         }
 
         public List<book> GetBooks()
         {
-           return _userRepository.GetBooks();
+           return _bookRepository.GetBooks();
+        }
+
+        public book GetById(int id)
+        {
+            return _bookRepository.GetById(id);
+        }
+
+        public void Update(book book)
+        {
+            _bookRepository.Update(book);
         }
     }
 }
